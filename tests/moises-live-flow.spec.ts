@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@chromatic-com/playwright';
 
 const URL_DO_APP = 'https://moises-live-ui-v3.vercel.app/v3';
 
@@ -81,7 +81,7 @@ test('Full UI flow (4 states)', async ({ page }) => {
     
     await expect(page.getByRole('button', { name: 'Other' })).toBeVisible();
 
-    await page.waitForTimeout(1000); 
+    await page.waitForTimeout(1000);
     await expect(page).toHaveScreenshot('04-speech-tab.png');
   });
 });

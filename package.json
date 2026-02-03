@@ -9,7 +9,9 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@chromatic-com/playwright": "^0.12.8",
     "@playwright/test": "^1.58.0",
-    "@types/node": "^25.1.0"
+    "@types/node": "^25.1.0",
+    "chromatic": "^15.0.0"
   }
 }

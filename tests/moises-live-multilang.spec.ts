@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@chromatic-com/playwright';
 
 const URL_DO_APP = 'https://moises-live-ui-v3.vercel.app/v3';
 
@@ -20,6 +20,10 @@ for (const rawLocale of rawLocales) {
       // 1. Access
       await page.goto(URL_DO_APP);
       await page.waitForLoadState('networkidle');
+
+      // --- "PICHAÇÃO" ---
+      // Isso vai pintar o site de vermelho só para o Chromatic gritar erro
+      await page.evaluate(() => document.body.style.backgroundColor = 'red'); 
 
       // 2. WELCOME SCREEN
       await expect(page).toHaveScreenshot(`01-welcome-${locale}.png`);

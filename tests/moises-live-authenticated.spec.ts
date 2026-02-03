@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@chromatic-com/playwright';
 
 const URL_DO_APP = 'https://moises-live-ui-v3.vercel.app/v3';
 
