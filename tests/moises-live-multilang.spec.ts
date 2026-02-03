@@ -26,7 +26,8 @@ for (const rawLocale of rawLocales) {
       await page.evaluate(() => document.body.style.backgroundColor = 'red'); 
 
       // 2. WELCOME SCREEN
-      await expect(page).toHaveScreenshot(`01-welcome-${locale}.png`);
+      // Adicionei "-DEMO" no nome. Isso é uma mudança radical para o robô.
+      await expect(page).toHaveScreenshot(`01-welcome-demo-${locale}.png`);
       await page.getByRole('button').first().click();
 
       // 3. MAIN SCREEN (TOGGLE OFF)
