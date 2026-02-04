@@ -20,13 +20,15 @@ test('Full UI flow (Guest)', async ({ page }, testInfo) => {
   await test.step('2. Main screen', async () => {
     await expect(page.getByText('Turn on AI volume control')).toBeVisible({ timeout: 10000 });
     
+    await expect(page.getByText('Connect your account')).toBeVisible({ timeout: 15000 });
+
     await takeSnapshot(page, '02-Guest-Main', testInfo);
   });
   
-    // Turns on the Toggle
+    // Turn on the Toggle
   await page.getByRole('switch', { name: 'Toggle Switch for AI Volume Control' }).click();
 
-    // --- 3. MUSIC TAB (Validação de Visitante) ---
+    // --- 3. MUSIC TAB (Validation of Guest) ---
   await test.step('3. Tab Music (Guest)', async () => {
     
     // Validates Guest banner
@@ -34,9 +36,9 @@ test('Full UI flow (Guest)', async ({ page }, testInfo) => {
 
     const vocalsContainer = page.locator('div').filter({ hasText: 'Vocals' }).first();
     const botaoMute = vocalsContainer.getByRole('img', { name: /Stem Vocals/i });
-    const slider = vocalsContainer.getByRole('slider');
+    const slider = vocalsContainer.getByRole('slider').first();
 
-        // Teste de Bloqueio de Mute
+    // Test of Mute Blocked
     await botaoMute.click();
     await takeSnapshot(page, '03-Guest-Mute-Blocked', testInfo);
 
