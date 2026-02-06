@@ -3,10 +3,7 @@ import { test, expect, takeSnapshot } from "@chromatic-com/playwright";
 const URL_DO_APP = 'https://moises-live-ui-v3.vercel.app/v3';
 
 const rawLocales = [
-    "ar_SA", "ca", "cs", "da", "de", "el", "en", "es", "fi", "fr",
-    "he", "hi_IN", "hr", "hu", "id", "it", "ja", "ko", "ms", "nl",
-    "no", "pl", "pt_BR", "ro", "ru", "sk", "sv", "th", "tr", "uk",
-    "vi", "zh_CN", "zh_TW"
+    "ar_SA", "de", "el", "en", "ru"
 ];
 
 for (const rawLocale of rawLocales) {

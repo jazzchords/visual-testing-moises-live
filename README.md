@@ -25,8 +25,9 @@ npx playwright test
 Run a specific test file:
 
 ```bash
-npx playwright test tests/home.spec.ts
 npx playwright test tests/moises-live-multilang.spec.ts
+npx playwright test tests/moises-live-flow.spec.ts
+npx playwright test tests/moises-live-authenticated.spec.ts
 ```
 
 ## Updating snapshots
@@ -41,7 +42,6 @@ npx playwright test --update-snapshots
 
 | File | Description |
 |------|-------------|
-| `home.spec.ts` | Full-page screenshot of the home screen. |
 | `moises-live-multilang.spec.ts` | Layout and translations across 34 locales (welcome, main, loading, music tab). |
 | `moises-live-flow.spec.ts` | Full UI flow: welcome → main → music tab (guest validation, mute blocked, slider limit) → speech tab. |
 | `moises-live-authenticated.spec.ts` | Authenticated flow: token injection and mute behavior when logged in. |
@@ -54,9 +54,10 @@ npx playwright test --update-snapshots
 - **Retries:** 2 on CI, 0 locally
 
 ## Technical Highlights
-Async Handling: Implementation of smart waits (e.g., toBeVisible) to handle AI loading states and network variations.
-Robust Selectors: Usage of getByRole and Text Filters to avoid breakage caused by CSS class changes.
-Auth Bypass: State injection strategy for faster and more stable testing without UI interaction.
+
+- **Async handling:** Smart waits (e.g. `toBeVisible`) for AI loading states and network variations.
+- **Robust selectors:** `getByRole` and text filters to avoid breakage from CSS class changes.
+- **Auth bypass:** State injection for faster, stable testing without UI login flows.
 
 ## License
 

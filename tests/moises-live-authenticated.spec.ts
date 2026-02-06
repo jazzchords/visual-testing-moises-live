@@ -9,16 +9,25 @@ test('Authenticated flow: Mute should work', async ({ page }, testInfo) => {
   // 1. TOKEN INJECTION
   await page.addInitScript((dados) => {
       window.localStorage.setItem(dados.key, dados.value);
+      // Remova essa linha do ReviewApp se você não quer que o modal apareça neste teste!
+      // Se quiser que apareça para tratar com o dismiss, pode deixar.
+      window.localStorage.setItem('moises:showReviewApp', 'true');
   }, { key: AUTH_KEY, value: AUTH_VALUE });
 
   // 2. Access the site
   await page.goto(URL_DO_APP);
   await page.waitForLoadState('networkidle');
 
-  // --- QUICK NAVIGATION TO MUTE ---
+  // --- TRATAMENTO DE MODAIS E WELCOME ---
   
-  // Step 1: Welcome
-  // Only click if the button is visible.
+  // 1. Tenta fechar o Rating se aparecer
+  const btnDismiss = page.getByRole('button', { name: 'Dismiss' });
+  if (await btnDismiss.isVisible()) {
+      await btnDismiss.click();
+  }
+
+  // 2. Tenta passar pelo Welcome se aparecer
+  // (Declaramos btnContinue apenas UMA vez aqui)
   const btnContinue = page.getByRole('button', { name: 'Continue' });
   if (await btnContinue.isVisible()) {
       await btnContinue.click();
